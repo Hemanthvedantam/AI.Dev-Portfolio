@@ -291,6 +291,43 @@ body {
     transition: 0.3s;
 }
 
+.project-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: linear-gradient(45deg, var(--neon-blue), var(--purple));
+            border-color: var(--neon-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0, 255, 255, 0.3);
+        }
+        
+        .project-card {
+            transition: all 0.4s ease;
+        }
+        
+         .project-card.hidden {
+            display: none !important; /* Ensure hidden projects don't take space */
+        }
+        
+
 /* Hero Section - Added 3D Animation */
 .hero {
     height: 100vh;
@@ -2628,12 +2665,21 @@ html {
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section class="section" id="projects">
+   <section class="section" id="projects">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Featured Projects</h2>
+            
+            <!-- Project Filter Buttons -->
+            <div class="project-filters" data-aos="fade-up">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="ai">AI Projects</button>
+                <button class="filter-btn" data-filter="data-science">Data Science</button>
+                <button class="filter-btn" data-filter="ai-data-science">AI + Data Science</button>
+            </div>
+            
             <div class="projects-grid">
-                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                <!-- AI-Powered Chatbot (AI) -->
+                <div class="project-card" data-category="ai" data-aos="fade-up" data-aos-delay="100">
                     <div class="project-image" style="background-image: url('Chat.jpg');"></div>
                     <div class="project-content">
                         <h3 class="project-title"><i class="fas fa-brain"></i> AI-Powered Chatbot</h3>
@@ -2654,7 +2700,8 @@ html {
                     </div>
                 </div>
 
-                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                <!-- Advanced EDA Dashboard (Data Science) -->
+                <div class="project-card" data-category="data-science" data-aos="fade-up" data-aos-delay="200">
                     <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80');"></div>
                     <div class="project-content">
                         <h3 class="project-title"><i class="fas fa-chart-line"></i> Advanced EDA Dashboard</h3>
@@ -2679,7 +2726,8 @@ html {
                     </div>
                 </div>
 
-                <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                <!-- Destiny.AI (AI + Data Science) -->
+                <div class="project-card" data-category="ai-data-science" data-aos="fade-up" data-aos-delay="300">
                     <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1503220317375-aaad61436b1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80');"></div>
                     <div class="project-content">
                         <h3 class="project-title"><i class="fas fa-map-marked-alt"></i> Destiny.AI</h3>
@@ -2703,8 +2751,9 @@ html {
                     </div>
                 </div>
 
-                <div class="project-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80');"></div>
+                <!-- AI Career Advisor (AI + Data Science) -->
+                <div class="project-card" data-category="ai-data-science" data-aos="fade-up" data-aos-delay="400">
+                    <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwa90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80');"></div>
                     <div class="project-content">
                         <h3 class="project-title"><i class="fas fa-robot"></i> AI Career Advisor</h3>
                         <p class="project-description">
@@ -2726,7 +2775,9 @@ html {
                         </div>
                     </div>
                 </div>
-                <div class="project-card" data-aos="fade-up" data-aos-delay="500">
+                
+                <!-- Text Summarizer (AI) -->
+                <div class="project-card" data-category="ai" data-aos="fade-up" data-aos-delay="500">
                     <div class="project-image" style="background-image: url('Text.jpg');"></div>
                     <div class="project-content">
                         <h3 class="project-title"><i class="fas fa-language"></i> Text Summarizer Using LLM</h3>
@@ -2749,8 +2800,8 @@ html {
                     </div>
                 </div>
 
-                <!-- ✅ Credit Card Fraud Detection -->
-                <div class="project-card" data-aos="fade-up" data-aos-delay="600">
+                <!-- Credit Card Fraud Detection (AI) -->
+                <div class="project-card" data-category="ai" data-aos="fade-up" data-aos-delay="600">
                     <div class="project-image" style="background-image: url('Credit_Card.jpg');"></div>
                     <div class="project-content">
                         <h3 class="project-title"><i class="fas fa-credit-card"></i> Credit Card Fraud Detection</h3>
@@ -2772,8 +2823,9 @@ html {
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
     </section>
-
 
   <section class="section" id="certifications">
     <div class="container">
@@ -2843,16 +2895,15 @@ html {
                     </div>
                 </div>
             </div>
-            
-            <!-- IBM AI Engineering -->
+
             <div class="certification-card">
-                <div class="certification-image" style="background-image: url('IBM_AI.png');"></div>
+                <div class="certification-image" style="background-image: url('github-foundations.png');"></div>
                 <div class="certification-content">
-                    <h3 class="certification-title">IBM AI Engineering Professional</h3>
-                    <div class="certification-issuer">IBM</div>
-                    <div class="certification-date">Jul 2025</div>
+                    <h3 class="certification-title">Github Foundations Certification</h3>
+                    <div class="certification-issuer">GitHub</div>
+                    <div class="certification-date">May 2025</div>
                     <div class="certification-links">
-                        <a href="https://www.credly.com/badges/e7f49c35-6f97-4f9e-85bf-e24930662959/public_url" target="_blank">View Credential</a>
+                        <a href="https://www.credly.com/badges/ed41ad71-9ed2-45b0-b2dd-dc3c5ca311a0/public_url" target="_blank">View Credential</a>
                     </div>
                 </div>
             </div>
@@ -2867,7 +2918,7 @@ html {
             <div class="timeline">
                 <div class="timeline-item left">
                     <div class="timeline-content">
-                        <h3>Software Developer Intern</h3>
+                        <h3>Software Engineer Intern</h3>
                         <div class="company"><i class="fas fa-building"></i> FedEx</div>
                         <div class="Location">
   <i class="fas fa-map-marker-alt"></i> Hyderabad
@@ -3190,6 +3241,41 @@ function createParticles() {
         container.appendChild(particle);
     }
 }
+
+ document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+            const projectsGrid = document.querySelector('.projects-grid');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Show/hide projects based on filter
+                    projectCards.forEach(card => {
+                        const category = card.getAttribute('data-category');
+                        
+                        if (filter === 'all' || filter === category) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
+                    
+                    // Force reflow to fix layout
+                    void projectsGrid.offsetHeight;
+                    
+                    // Reinitialize AOS for new visible elements
+                    AOS.refresh();
+                });
+            });
+        });
 
 // Call this after DOM loads
 document.addEventListener('DOMContentLoaded', createParticles);
