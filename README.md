@@ -2,7 +2,7 @@
 
 Hi there! 👋 I'm **Hemanth Vedantam**, an AI/ML Developer and Data Scientist passionate about building intelligent systems that solve real-world problems. This is my personal portfolio website, where I showcase my projects, certifications, skills, and experience in Artificial Intelligence, Machine Learning, and Data Science.
 
-Live Link : https://hemanthvedantam.github.io/AI.Dev-Portfolio/
+Live Link : https://polite-crepe-949e31.netlify.app/
 ---
 
 ## 🧠 About Me
